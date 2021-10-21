@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "uuidv"
-    ]
+    ],
+    "window.title": "${activeEditorShort}${separator}${rootName} ${separator} [Branch: main]"
 }

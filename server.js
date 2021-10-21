@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { v4: uuid } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const { readFromFile, readAndAppend } = require('./helpers/fsUtils');
 //const db = require('./db/db.json');
 
@@ -22,45 +22,14 @@ app.get('/', (req, res) =>
 );
 
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes/.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 //GET request for Notes
-app.get('api/notes', (req, res) => {
-  readFromFile('/db/db.json').then((data) => 
+app.get('/api/notes', (req, res) => {
+  readFromFile('./db/db.json').then((data) => 
   res.json(JSON.parse(data)))
 });
-
-
-// Stuff I got from Chuck
-// app.delete('api/db.json/:id', (req,res) => {
-//   if (req.params.id) {
-//     console.info(`${req.method} request received to get a single note`);
-//     const notesId = req.params.id;
-//     for (let i = 0, i < db.length; i++) {
-
-//     }
-//   }
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //POST request to add a note
 app.post('/api/notes', (req, res) => {
@@ -92,6 +61,17 @@ res.status(201).json(response);
   res.status(500).json('Error in posting Note');
 }
 });
+
+
+// app.delete('api/db.json/:id', (req,res) => {
+//   if (req.params.id) {
+//     console.info(`${req.method} request received to get a single note`);
+//     const notesId = req.params.id;
+//     for (let i = 0, i < db.length; i++) {
+
+//     }
+//   }
+// })
 
 
 
