@@ -32,6 +32,21 @@ const readAndAppend = (content, file) => {
   });
 };
 
+//function for deleting the motherfucking note
+const readAndDelete = (id, file) => {
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+      for(i = 0; i < parsedData.length; i++) {
+        if (id == parsedData[i].id) {
+          parsedData.splice(i, 1);
+        }
+      }
+      writeToFile(file, parsedData);
+    }
+  });
+};
 
-
-module.exports = { readFromFile, writeToFile, readAndAppend };
+module.exports = { readFromFile, writeToFile, readAndAppend, readAndDelete };
