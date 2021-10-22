@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
+        "Ismeny",
+        "Jayla",
+        "Lundin",
         "uuidv"
     ],
     "window.title": "${activeEditorShort}${separator}${rootName} ${separator} [Branch: main]"
